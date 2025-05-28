@@ -1,0 +1,188 @@
+/* App.css - Rewritten for robust full-screen layout */
+
+/* Global reset and box-sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Full viewport height and width for html, body, and #root */
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  min-width: 100% !important; /* Ensure it tries to be at least full width */
+  max-width: none !important; /* Remove any max-width constraints */
+  margin: 0 !important; /* Override any accidental margins */
+  padding: 0 !important; /* Override any accidental padding */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  overflow: hidden; /* Prevent body scrolling */
+  background-color: #f0f0f0; /* Base background for the entire page */
+}
+
+/* App container setup */
+.app-container {
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  height: 100%;         /* Fill the #root */
+  width: 100%;          /* Fill the #root */
+  background-color: #ffffff; /* Background for the app area */
+  /* border: 2px solid blue; */ /* DEBUG: app-container border */
+}
+
+/* Webview section - main content area */
+.webview-section {
+  /* display: flex;          Removed */
+  /* flex-direction: column; Removed */
+  flex-grow: 1;           /* Take up all available vertical space */
+  flex-shrink: 1;         /* Allow shrinking if necessary */
+  flex-basis: 0%;         /* Basis for flex grow */
+  position: relative;     /* For positioning absolute children (save button, loader) */
+  overflow: hidden;       /* Prevent webview content from overflowing this section */
+  /* background-color: lightgoldenrodyellow; */ /* DEBUG: webview-section background */
+  /* border: 3px solid limegreen !important; */ /* DEBUG: webview-section border - REMOVING */
+}
+
+/* Webview element itself */
+.webview-element {
+  /* flex-grow: 1;       Removed */
+  width: 100%;        /* Full width of parent */
+  height: 100%;       /* Explicitly set height to fill parent */
+  /* min-height: 0;    Removed */
+  border: none;       /* No border for the webview iframe */
+  outline: none;      /* From old working example */
+  display: flex;     /* Changed from block, from old working example */
+  overflow: hidden;   /* From old working example */
+  transform: translateZ(0); /* From old working example */
+  will-change: transform;   /* From old working example */
+  /* background-color: lightseagreen; */ /* DEBUG: webview-element background */
+  /* border: 3px solid magenta !important; */ /* DEBUG: webview-element border - REMOVING */
+}
+
+/* Save button styling */
+.save-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  transition: background-color 0.2s ease;
+}
+
+.save-button:hover {
+  background-color: #218838;
+}
+
+/* Loading indicator styling */
+.loading-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.75);
+  color: white;
+  padding: 18px 28px;
+  border-radius: 8px;
+  z-index: 1001;
+  font-size: 16px;
+  text-align: center;
+}
+
+/* Dashboard controls container */
+.dashboard-controls {
+  flex-shrink: 0; /* Prevent shrinking when webview-section grows */
+  /* padding: 12px; */ /* Handled by inline style now */
+  background-color: #f8f9fa;
+  border-top: 1px solid #dee2e6;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
+  /* display: flex; gap: 10px; etc. are handled by inline styles */
+}
+
+/* Dashboard toggle button styling */
+.dashboard-toggle-button {
+  /* width: 100%; */ /* Handled by inline style flex-grow */
+  padding: 10px 15px; /* Standard padding for buttons */
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.2s ease;
+  /* min-width and flex-grow are handled by inline styles */
+}
+
+.dashboard-toggle-button:hover {
+  background-color: #0056b3;
+}
+
+/* Dashboard panel (collapsible content) */
+.dashboard-panel {
+  flex-shrink: 0; /* Prevent shrinking */
+  /* max-height: 30vh; */ /* Use viewport height for max, adjust as needed */
+  height: 250px; /* Or a fixed height for now */
+  overflow-y: auto; /* Scroll if content exceeds height */
+  padding: 15px;
+  background-color: #ffffff;
+  border-top: 1px solid #dee2e6;
+  /* border: 2px solid orange; */ /* DEBUG: dashboard-panel border */
+}
+
+.dashboard-panel h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  color: #343a40;
+}
+
+.dashboard-panel p {
+  color: #6c757d;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+
+.dashboard-panel ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dashboard-panel li {
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e9ecef;
+  font-size: 0.9rem;
+}
+
+.dashboard-panel li:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.dashboard-panel strong {
+  color: #212529;
+  font-weight: 600; /* Slightly bolder */
+}
+
+.dashboard-panel a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.dashboard-panel a:hover {
+  text-decoration: underline;
+} 
