@@ -1,6 +1,6 @@
-# Solar YYC Explorer
+# Google Maps Exploreer
 
-An Electron application for exploring and managing solar business data with Supabase integration.
+An Electron application for exploring and managing business data with through Google Maps
 
 ## Features
 
@@ -21,7 +21,7 @@ An Electron application for exploring and managing solar business data with Supa
 ### 1. Clone the repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/aly-001/google-maps-explorer.git
 cd my-electron-app
 ```
 
@@ -132,7 +132,3 @@ If you encounter build issues:
 1. Delete `node_modules` and `package-lock.json`
 2. Run `npm install` again
 3. Ensure you're using a compatible Node.js version
-
-## License
-
-MIT License - see LICENSE file for details 
