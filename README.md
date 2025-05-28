@@ -74,18 +74,6 @@ npm start
 
 This will start the Electron application with hot reload enabled.
 
-### Build for production
-
-```bash
-npm run package
-```
-
-### Create distributables
-
-```bash
-npm run make
-```
-
 ## Project Structure
 
 ```
